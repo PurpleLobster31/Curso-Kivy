@@ -12,27 +12,33 @@ class MyGridLayout(GridLayout):
         super(MyGridLayout, self).__init__(**kwargs)
         
         # Set columns
-        self.cols = 2
+        self.cols = 1
         
-        # Add widgets
+        #Create second grid layout
+        self.top_grid = GridLayout()
+        self.top_grid.cols = 2
+        
+        # Add widgets and input boxes
         self.name_label = Label(text="Name: ")
-        self.add_widget(self.name_label) 
-        
-        #Add input boxes
+        self.top_grid.add_widget(self.name_label) 
+
         self.name_input = TextInput(multiline = False)
-        self.add_widget(self.name_input)
+        self.top_grid.add_widget(self.name_input)
         
         self.pizza_label = Label(text="Favourite pizza: ")
-        self.add_widget(self.pizza_label) 
+        self.top_grid.add_widget(self.pizza_label) 
         
         self.pizza_input = TextInput(multiline = False)
-        self.add_widget(self.pizza_input)
+        self.top_grid.add_widget(self.pizza_input)
         
         self.color_label = Label(text="Favourite color: ")
-        self.add_widget(self.color_label) 
+        self.top_grid.add_widget(self.color_label) 
         
         self.color_input = TextInput(multiline = False)
-        self.add_widget(self.color_input)
+        self.top_grid.add_widget(self.color_input)
+        
+        #Add top_grid to app
+        self.add_widget(self.top_grid)
         
         #Create submit button
         self.submit = Button(text = "Submit", font_size = 32)
@@ -47,7 +53,7 @@ class MyGridLayout(GridLayout):
         
         #print(f'Hello, my name is {name}; I like {pizza} pizza. Also, my favourite color is {color}!')
         #Printing on the screen!
-        self.add_widget(Label(text = f"Hey {name}! I know you favourite pizza is {pizza}, and your favourite color is {color}! Got ya!"))
+        self.add_widget(Label(text = f"Hey {name}! I know your favourite pizza is {pizza}, and your favourite color is {color}! Got ya!"))
         
         #Clear the input boxes
         self.name_input.text = ''
